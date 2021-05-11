@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block body %}
+    {% if error_massage %}
+        <div class="alert alert-warning" role="alert">
+            {{ error_massage }}
+        </div>
+    {% endif %}
+    <h1>Edit Page</h1>
+    <form action="{% url 'encyclopedia:edit' entry %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="w-100" for="entry-title">Title</label>
+            <input class="w-100 form-control" type="text" name="entry-title" id="entry-title" value="{{ entry }}" readonly>
+            
+            <label class="w-100 pt-3" for="entry-text">Content</label>
+            <textarea class="form-control" label="Content" name="entry-text" id="entry-text" rows="10" required>{{ content }}</textarea>
+            <small class="w-100 form-text text-muted">You may type the content here in Markdown.</small>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Save"> 
+    </form>
+    
+{% endblock %}

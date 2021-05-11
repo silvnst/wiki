@@ -1,0 +1,12 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ Error }}
+{% endblock %}
+
+{% block body %}
+    <div class="alert alert-primary" role="alert">
+        Ups! <b>{{ entry }}</b> is unfortunatelly not in our wiki yet.
+    </div>
+    <p>Click <a href="{% url 'encyclopedia:new' %}">here</a> to add a new page.</p>
+{% endblock %}
